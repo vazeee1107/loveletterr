@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Untuk Ayaa 💌</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Georgia, serif;
+      background: linear-gradient(135deg, #ffe4ec, #fff7f0);
+      color: #5b2637;
+      overflow: hidden;
+    }
+
+    /* Hati yang melayang */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      animation: naik 8s linear infinite;
+      opacity: 0.7;
+      font-size: 20px;
+    }
+
+    @keyframes naik {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Halaman pembuka */
+    .intro {
+      transition: 0.6s;
+    }
+
+    .intro.hide {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+      position: absolute;
+    }
+
+    h1 {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    /* Amplop */
+    .envelope {
+      width: 220px;
+      height: 150px;
+      margin: 0 auto 25px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .env-back {
+      position: absolute;
+      inset: 0;
+      background: #f5a4bb;
+      border-radius: 10px;
+    }
+
+    .env-front {
+      position: absolute;
+      inset: 0;
+      background: #ee8eaa;
+      clip-path: polygon(
+        0 0,
+        50% 55%,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+      border-radius: 10px;
+    }
+
+    .env-flap {
+      position: absolute;
+      inset: 0;
+      background: #f8b6ca;
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 62%
+      );
+      transform-origin: top;
+      transition: 0.7s;
+      z-index: 3;
+    }
+
+    .envelope.open .env-flap {
+      transform: rotateX(180deg);
+    }
+
+    .seal {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      top: 58%;
+      transform: translate(-50%, -50%);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #c94d70;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+    }
+
+    /* Tombol */
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 14px 25px;
+      background: #c94d70;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Surat */
+    .letter {
+      display: none;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 35px;
+      text-align: left;
+      box-shadow: 0 20px 50px rgba(91, 38, 55, 0.15);
+      animation: muncul 0.8s ease;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .letter.show {
+      display: block;
+    }
+
+    @keyframes muncul {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .letter h2 {
+      text-align: center;
+      font-size: 30px;
+      margin-top: 0;
+    }
+
+    .letter p {
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 30px;
+      font-style: italic;
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 35px;
+      }
+
+      .letter {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hati-hati -->
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+
+    <!-- PEMBUKA -->
+    <section class="intro" id="intro">
+
+      <div class="envelope" id="envelope">
+
+        <div class="env-back"></div>
+
+        <div class="env-front"></div>
+
+        <div class="env-flap"></div>
+
+        <div class="seal">
+          ♥️
+        </div>
+
+      </div>
+
+      <h1>Untuk Kamu 💌</h1>
+
+      <p>
+        Ada sesuatu yang ingin kakanda sampaikan...
+      </p>
+
+      <button onclick="openLetter()">
+        Buka Surat 💌
+      </button>
+
+    </section>
+
+
+    <!-- ISI SURAT -->
+    <article class="letter" id="letter">
+
+      <h2>Untuk Aya 🤍</h2>
+
+      <p>
+        Hai sayang,
+      </p>
+
+      <p>
+        Saya mungkin nggak selalu pandai menyampaikan
+        apa yang saya rasakan, jadi kali ini saya memilih
+        menuliskannya.
+      </p>
+
+      <p>
+        Terima kasih sudah menjadi bagian dari hari-hariku.
+        Hal hal kecil seperti obrolan sederhana, tawa,
+        dan momen-momen kecil ternyata bisa membuat
+        hari terasa jauh lebih menyenangkan yaa.
+      </p>
+
+      <p>
+        Saya nggak tahu seperti apa cerita kita nanti,
+        tapi saya ingin menikmati setiap momen yang ada
+        tanpa terburu-buru.
+      </p>
+
+      <p>
+        Semoga kamu selalu dikelilingi hal-hal baik
+        dan semoga surat kecil ini bisa membuatmu
+        tersenyum hari ini. 🌷
+      </p>
+
+      <p>
+        Kalau suatu saat kamu membaca surat ini lagi,
+        ingat satu hal:
+        <b>kamu adalah seseorang yang berarti yaa sayang.</b> 💗
+      </p>
+
+      <p class="signature">
+        Dengan tulus,<br>
+        <b>Ardhan</b> 💕
+      </p>
+
+      <div class="actions">
+        <button onclick="location.reload()">
+          Baca Lagi 💌
+        </button>
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <script>
+
+    /* Membuka surat */
+    function openLetter() {
+	document.getElementById("music").play();
+
+      document
+        .getElementById("envelope")
+        .classList.add("open");
+
+      setTimeout(function() {
+
+        document
+          .getElementById("intro")
+          .classList.add("hide");
+
+        document
+          .getElementById("letter")
+          .classList.add("show");
+
+      }, 600);
+
+    }
+
+
+    /* Membuat hati secara otomatis */
+    const hearts = document.getElementById("hearts");
+
+    const simbol = ["♥️", "♡", "❤️", "✦"];
+
+    for (let i = 0; i < 25; i++) {
+
+      const heart = document.createElement("span");
+
+      heart.className = "heart";
+
+      heart.innerHTML =
+        simbol[Math.floor(Math.random() * simbol.length)];
+
+      heart.style.left =
+        Math.random() * 100 + "%";
+
+      heart.style.fontSize =
+        (14 + Math.random() * 20) + "px";
+
+      heart.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+      heart.style.animationDelay =
+        (-Math.random() * 10) + "s";
+
+      hearts.appendChild(heart);
+    }
+
+  </script>
+
+><audio id="music" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
